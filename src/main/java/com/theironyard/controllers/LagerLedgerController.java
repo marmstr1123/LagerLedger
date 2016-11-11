@@ -60,19 +60,19 @@ public class LagerLedgerController {
             throw new Exception("Invalid Password");
         }
 
-        session.setAttribute("username", user.getUser());
+        session.setAttribute("user", user.getUser());
         return user;
     }
 
     @RequestMapping(path = "/user",method = RequestMethod.GET)
     public User getUser(HttpSession session) {
-        String username = (String) session.getAttribute("username");
+        String username = (String) session.getAttribute("user");
         return users.findFirstByUser(username);
     }
 
     @RequestMapping(path = "/beers",method = RequestMethod.POST)
     public void postBeer(HttpSession session, @RequestBody Beer beer) throws Exception {
-        String username = (String) session.getAttribute("username");
+        String username = (String) session.getAttribute("user");
         if (username == null) {
             throw new Exception("Invalid user");
         }
