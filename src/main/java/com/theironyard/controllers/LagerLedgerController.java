@@ -1,4 +1,5 @@
 package com.theironyard.controllers;
+import com.theironyard.entities.Beer;
 import com.theironyard.entities.User;
 import com.theironyard.services.BeerRepository;
 import com.theironyard.services.UserRepository;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 
 /**
  * Created by Troy on 11/11/16.
@@ -29,6 +31,7 @@ public class LagerLedgerController {
     public void init() {
     }
 
+    //Thanks Zach
     @RequestMapping(path = "/user",method = RequestMethod.POST)
     public ResponseEntity<User> postUser(HttpSession session, @RequestBody User user) throws PasswordStorage.InvalidHashException, PasswordStorage.CannotPerformOperationException {
         User userFromDb = users.findFirstByName(user.getUsername());
@@ -41,12 +44,27 @@ public class LagerLedgerController {
         }
 
         session.setAttribute("username", user.getUsername());
-        return new ResponseEntity<User>(user, HttpStatus.OK);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @RequestMapping(path = "/user",method = RequestMethod.GET)
     public User getUser(HttpSession session) {
         String username = (String) session.getAttribute("username");
         return users.findFirstByName(username);
+    }
+
+    @RequestMapping(path = "/beers",method = RequestMethod.POST)
+    public ResponseEntity<Beer> postBeer(HttpSession session, @RequestBody Beer beer) {
+        String username = (String) session.getAttribute("username");
+        if (username == null) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+        beer.setUser(users.findFirstByName(username));
+        return new ResponseEntity<>(beers.save(beer),HttpStatus.CREATED);
+    }
+
+    @RequestMapping(path = "/beers",method = RequestMethod.GET)
+    public Iterable<Beer> getBeers() {
+        return beers.findAll();
     }
 }
