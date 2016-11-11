@@ -27,24 +27,19 @@ public class LagerLedgerController {
     @Autowired
     UserRepository users;
 
-    @PostConstruct
-    public void init() {
-    }
-
-    //Thanks Zach
     @RequestMapping(path = "/user",method = RequestMethod.POST)
-    public ResponseEntity<User> postUser(HttpSession session, @RequestBody User user) throws PasswordStorage.InvalidHashException, PasswordStorage.CannotPerformOperationException {
+    public User postUser(HttpSession session, @RequestBody User user) throws Exception {
         User userFromDb = users.findFirstByName(user.getUsername());
         if (userFromDb == null) {
             user.setPassword(PasswordStorage.createHash(user.getPassword()));
             users.save(user);
         }
         else if (!PasswordStorage.verifyPassword(user.getPassword(), userFromDb.getPassword())) {
-            return new ResponseEntity<User>(HttpStatus.FORBIDDEN);
+            throw new Exception("Invalid Password");
         }
 
         session.setAttribute("username", user.getUsername());
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        return user;
     }
 
     @RequestMapping(path = "/user",method = RequestMethod.GET)
@@ -54,13 +49,13 @@ public class LagerLedgerController {
     }
 
     @RequestMapping(path = "/beers",method = RequestMethod.POST)
-    public ResponseEntity<Beer> postBeer(HttpSession session, @RequestBody Beer beer) {
+    public void postBeer(HttpSession session, @RequestBody Beer beer) throws Exception {
         String username = (String) session.getAttribute("username");
         if (username == null) {
-            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+            throw new Exception("Invalid user");
         }
         beer.setUser(users.findFirstByName(username));
-        return new ResponseEntity<>(beers.save(beer),HttpStatus.CREATED);
+        beers.save(beer);
     }
 
     @RequestMapping(path = "/beers",method = RequestMethod.GET)
