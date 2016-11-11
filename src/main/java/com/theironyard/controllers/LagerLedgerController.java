@@ -5,16 +5,12 @@ import com.theironyard.services.BeerRepository;
 import com.theironyard.services.UserRepository;
 import com.theironyard.utitilites.PasswordStorage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 
 /**
  * Created by Troy on 11/11/16.
@@ -29,7 +25,7 @@ public class LagerLedgerController {
 
     @RequestMapping(path = "/user",method = RequestMethod.POST)
     public User postUser(HttpSession session, @RequestBody User user) throws Exception {
-        User userFromDb = users.findFirstByName(user.getUsername());
+        User userFromDb = users.findFirstByName(user.getUser());
         if (userFromDb == null) {
             user.setPassword(PasswordStorage.createHash(user.getPassword()));
             users.save(user);
@@ -38,7 +34,7 @@ public class LagerLedgerController {
             throw new Exception("Invalid Password");
         }
 
-        session.setAttribute("username", user.getUsername());
+        session.setAttribute("username", user.getUser());
         return user;
     }
 
