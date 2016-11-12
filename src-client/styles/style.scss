@@ -1,3 +1,17 @@
+<<<<<<< HEAD
+* {
+	box-sizing: border-box;
+}
+
+body{
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+h1 {
+	font-size: 300px;
+	text-align: center;
+	color: fuchsia;
+=======
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 
 *{ box-sizing: border-box }
@@ -44,4 +58,5 @@ img {
       }
    }
 
+>>>>>>> fabb96a51153ecdfeb9079c5997688e86f4682ea
 }

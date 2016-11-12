@@ -1,4 +1,10 @@
 const ReactDOM = require('react-dom');
+<<<<<<< HEAD
+const React = require('react')
+const Backbone = require('backbone');
+
+document.querySelector('#app-container').innerHTML = `<h1>Yah okay</h1>`
+=======
 const React = require('react');
 const Backbone = require('backbone');
 const LogInView = require('./loginPage.js');
@@ -28,5 +34,6 @@ const AppRouter = Backbone.Router.extend({
   }
 
 })
+>>>>>>> fabb96a51153ecdfeb9079c5997688e86f4682ea
 
 new AppRouter()

@@ -1,1 +1,1 @@
-console.error("Error: Cannot find module './store.js' from '/Users/mikearmstrong/tiy/joint-projects-stuff/lager-ledger-assignment-25/src-client/scripts'");
+console.error("Error: Couldn't find preset \"es2015\" relative to directory \"/Users/chipc/TIY/assignments\" while parsing file: /Users/chipc/TIY/assignments/assignment-25-lager-ledger/src-client/scripts/app.js");
