@@ -1,0 +1,47 @@
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+
+*{ box-sizing: border-box }
+img {
+   width: 100%;
+   display: block;
+}
+
+#app-container{
+
+   .loginPage{
+      padding: 20px;
+      background: url("http://hops-house.com/wp-content/uploads/2015/08/roundMH-fullcolor.png") center center no-repeat;
+      height: 100vh;
+   }
+   .user-group{
+      position: fixed;
+      top: 65%;
+      left: 34%;
+   }
+
+   .loggedIn-home{
+      padding: 30px;
+      background: url("https://t3.ftcdn.net/jpg/01/09/37/66/240_F_109376618_MP0he5UoqIeUyiOK2uKNWOKh6y6oXOHj.jpg") ;
+      height: 100vh;
+
+      .loggedIn-content{
+         padding: 20px;
+         background: tomato;
+
+
+         .left-column{
+            padding: 10px;
+            color: white;
+            background: blue;
+         }
+         .right-column{
+            padding: 10px;
+            background: yellow;
+
+
+         }
+
+      }
+   }
+
+}
