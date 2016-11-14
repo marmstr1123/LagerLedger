@@ -9,13 +9,14 @@ const UserModel = require('./ModelUser.js')
 
 const AppRouter = Backbone.Router.extend({
    routes: {
-      "fuckers": "homePage",
+      "beerHome": "homePage",
       "": "loginPage"
    },
 
+
    loginPage: function(){
       console.log('Routing to login')
-      ReactDOM.render(  <AppViewController routedFrom="loginPage"/> ,document.querySelector('#app-container'))
+      ReactDOM.render( <AppViewController routedFrom="loginPage"/> ,document.querySelector('#app-container'))
    },
 
    homePage: function(){
