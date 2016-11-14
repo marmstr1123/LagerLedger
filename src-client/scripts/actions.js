@@ -16,8 +16,9 @@ const ACTIONS = {
 
   fetchUserBeerCollection: function(beerObj){
       const beerColl = new BeersCollection()
+      console.log('fetchinnnggg??')
       beerColl.fetch().then(function(){
-         console.log('fetched beers', beerColl)
+         console.log('fetched beers LOOOOKKKKKKK', beerColl)
          STORE.setStore('currentBeers',beerColl.models)
       })
   },
@@ -26,12 +27,11 @@ const ACTIONS = {
     const beerMod = new BeersModel()
     beerMod.set(newBeerData)
     return beerMod.save().then(function(){
-      let newState = STORE.getStoreData()
-      newState.push(beerMod)
-      console.log('redirect');
-      STORE.setState('currentBeers', newState)
-        window.location.hash = "beerHome"
-    })
+
+      ACTIONS.fetchUserBeerCollection()
+      // STORE.setState('currentBeers', newState)
+
+   })
 
  },
 

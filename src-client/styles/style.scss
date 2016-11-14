@@ -12,6 +12,8 @@ h1 {
 	text-align: center;
 	color: fuchsia;
 
+}
+
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 
 *{ box-sizing: border-box }
@@ -24,38 +26,48 @@ img {
 
    .loginPage{
       padding: 20px;
-      background: url("http://hops-house.com/wp-content/uploads/2015/08/roundMH-fullcolor.png") center center no-repeat;
+		background-image: url("../images/attempt2.png");
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
+
       height: 100vh;
    }
    .user-group{
       position: fixed;
       top: 65%;
-      left: 34%;
+      left: 10%;
    }
 
    .loggedIn-home{
-      padding: 30px;
+
+		padding: 30px;
       background: url("https://t3.ftcdn.net/jpg/01/09/37/66/240_F_109376618_MP0he5UoqIeUyiOK2uKNWOKh6y6oXOHj.jpg") ;
       height: 100vh;
 
       .loggedIn-content{
          padding: 20px;
          background: tomato;
+		}
 
-
-         .left-column{
+      .left-column{
             padding: 10px;
             color: white;
-            background: blue;
-         }
-         .right-column{
+            background: url('http://bgfons.com/upload/leather_texture347.jpg')center center no-repeat;
+      }
+
+      .right-column{
             padding: 10px;
-            background: yellow;
-
-
-         }
+            background: url('http://orig02.deviantart.net/8a74/f/2007/223/b/4/old_crackly_parchment_texture_by_teeth_man.png') center center no-repeat;
+				background-size: cover;
+				background-position: center center;
+				background-repeat: no-repeat;
 
       }
+
+
    }
 
 }
+
+//http://hops-house.com/wp-content/uploads/2015/08/roundMH-fullcolor.png

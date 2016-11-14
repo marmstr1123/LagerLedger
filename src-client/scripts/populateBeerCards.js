@@ -14,7 +14,7 @@ const FillBeers = React.createClass({
    return (
 
       <div className="col-sm-6 col-md-4">
-         <div className="thumbnail">
+         <div className="thumbnail tiles">
             <img  src={this.props.beerData.get('image')} alt=""/>
             <div className="caption">
                <h3 className="beerName">{this.props.beerData.get("name")}</h3>
