@@ -71,13 +71,14 @@ public class LagerLedgerController {
     }
 
     @RequestMapping(path = "/beers",method = RequestMethod.POST)
-    public void postBeer(HttpSession session, @RequestBody Beer beer) throws Exception {
+    public Beer postBeer(HttpSession session, @RequestBody Beer beer) throws Exception {
         String username = (String) session.getAttribute("user");
         if (username == null) {
             throw new Exception("Invalid user");
         }
         beer.setUser(users.findFirstByUser(username));
         beers.save(beer);
+        return beer;
     }
 
     @RequestMapping(path = "/beers",method = RequestMethod.GET)
