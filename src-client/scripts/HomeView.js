@@ -46,7 +46,7 @@ const HomeView = React.createClass({
          <div className="loggedIn-home">
          <div className="col-md-12 column loggedIn-content">
             <div className="column col-md-3 left-column">
-               <h2>dummy text</h2>
+               <h2>Lager Ledger</h2>
 
                <div className="row">
                  <div className="col-md-12">
